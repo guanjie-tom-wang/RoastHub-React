@@ -33,6 +33,7 @@ export default class Upload extends React.Component {
     formData.append("name", nameOfRecipes);
     formData.append("file", recipesFile);
     formData.append("image", coverPage);
+    formData.append("type", typeOfRecipes);
 
     const recipeTypeUrls = {
       Breakfast: "/breakfast",
@@ -68,8 +69,10 @@ export default class Upload extends React.Component {
       this.setState({ recipesFile: files[0] });
     } else if (name === "image") {
       this.setState({ coverPage: files[0] });
+    } else if (name === "typeOfRecipes") {
+      this.setState({ typeOfRecipes: value });
     } else {
-      this.setState({ [name]: value });
+      this.setState({ nameOfRecipes: value });
     }
   };
   render() {

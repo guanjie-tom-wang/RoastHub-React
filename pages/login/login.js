@@ -43,7 +43,7 @@ export default class SignupForm extends React.Component {
 
         if (res.data.success == true) {
           this.setState({ loginsuccess: true, show: false });
-          window.open("/upload", "_blank");
+          window.open("../upload/upload", "_blank");
           // alert("login successfulm, transfer to upload page");
         } else {
           this.setState({ show: true, loginsuccess: false });

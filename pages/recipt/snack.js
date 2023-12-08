@@ -11,6 +11,7 @@ export default class Snack extends React.Component {
       images: [],
       names: [],
       files: [],
+      types: [],
     };
   }
 
@@ -21,6 +22,7 @@ export default class Snack extends React.Component {
         if (res.data && Array.isArray(res.data)) {
           const images = res.data.map((item) => item.pictureUrl);
           const names = res.data.map((item) => item.name);
+          const types = res.data.map((item) => item.type);
           const files = res.data.map((item) => item.detailUrl);
 
           this.setState(
@@ -28,6 +30,7 @@ export default class Snack extends React.Component {
               images: images,
               names: names,
               files: files,
+              types: types,
             },
             () => {
               console.log(" files", this.state.files); // This will log the updated state
@@ -52,6 +55,7 @@ export default class Snack extends React.Component {
       pictureUrl: image,
       name: this.state.names[index],
       pdfUrl: this.state.files[index],
+      type: this.state.types[index],
     }));
 
     return (

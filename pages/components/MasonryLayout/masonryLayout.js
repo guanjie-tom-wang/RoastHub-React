@@ -38,7 +38,12 @@ const MasonryLayout = ({ items }) => {
         <div key={index} className={styles.masonryItem}>
           {console.log(item)}
           <Image
-            src={"http://127.0.0.1:8888/breakfast/showimage/" + item.pictureUrl}
+            src={
+              "http://127.0.0.1:8888/" +
+              item.type.toLowerCase() +
+              "/showimage/" +
+              item.pictureUrl
+            }
             width={350}
             height={350}
             alt={item.name}

@@ -11,6 +11,7 @@ export default class Lunch extends React.Component {
       images: [],
       names: [],
       files: [],
+      types: [],
     };
   }
 
@@ -22,12 +23,14 @@ export default class Lunch extends React.Component {
           const images = res.data.map((item) => item.pictureUrl);
           const names = res.data.map((item) => item.name);
           const files = res.data.map((item) => item.detailUrl);
+          const types = res.data.map((item) => item.type);
 
           this.setState(
             {
               images: images,
               names: names,
               files: files,
+              types: types,
             },
             () => {
               console.log(" files", this.state.files); // This will log the updated state
@@ -52,6 +55,7 @@ export default class Lunch extends React.Component {
       pictureUrl: image,
       name: this.state.names[index],
       pdfUrl: this.state.files[index],
+      type: this.state.types[index],
     }));
 
     return (
