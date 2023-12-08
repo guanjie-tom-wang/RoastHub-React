@@ -1,1 +1,2 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+## Food Lover Frontend
+- Used React Next.js built the front end for [java-backend food lover](https://github.com/guanjie-tom-wang/FoodLover-javaVersion/)
