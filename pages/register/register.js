@@ -1,14 +1,12 @@
 import React from "react";
 import axios from "./request";
-import { useHistory } from "react-router-dom";
-import { withRouter } from "react-router-dom";
 
 const base = {
   baseUrl: "http://127.0.0.1:8888",
-  login: "/login",
+  login: "/register",
 };
 
-export default class SignupForm extends React.Component {
+export default class Register extends React.Component {
   componentDidMount() {
     const link = document.createElement("link");
     link.rel = "stylesheet";
@@ -38,9 +36,6 @@ export default class SignupForm extends React.Component {
         "Access-Control-Allow-Origin": "*",
       })
       .then((res) => {
-        console.log("guanjie wang1", res.data.success);
-        console.log("guanjie wang2", res.data);
-
         if (res.data.success == true) {
           this.setState({ loginsuccess: true, show: false });
           window.open("/upload", "_blank");
@@ -69,12 +64,16 @@ export default class SignupForm extends React.Component {
           <div class="row h-100 justify-content-center align-items-center">
             <div class="col-6">
               <div class="card-body">
-                <h5 class="card-title text-center">Sign In</h5>
+                <h5 class="card-title text-center">Create A Account </h5>
                 {this.state.loginsuccess && (
-                  <h6 class="card-title text-center">Login successful!</h6>
+                  <h6 class="card-title text-center">
+                    Account Create Successful!
+                  </h6>
                 )}
                 {this.state.show && (
-                  <h6 class="card-title text-center">Login unsuccessful!</h6>
+                  <h6 class="card-title text-center">
+                    Account Create Unsuccessful!
+                  </h6>
                 )}
                 <form onSubmit={this.onSubmit}>
                   <div class="form-label-group">
@@ -108,12 +107,8 @@ export default class SignupForm extends React.Component {
                     class="btn btn-lg btn-primary btn-block"
                     type="submit"
                   >
-                    Sign in
+                    Create
                   </button>
-                  <p>Don't have an account yet?</p>
-                  <a href="/register" class="btn btn-lg btn-primary btn-block">
-                    Create an Account
-                  </a>
                 </form>
               </div>
             </div>

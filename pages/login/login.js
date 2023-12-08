@@ -1,14 +1,14 @@
 import React from "react";
-import axios from "./request";
+import axios from "../recipt/request";
 import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
 const base = {
   baseUrl: "http://127.0.0.1:8888",
-  login: "/register",
+  login: "/login",
 };
 
-export default class Register extends React.Component {
+export default class SignupForm extends React.Component {
   componentDidMount() {
     const link = document.createElement("link");
     link.rel = "stylesheet";
@@ -69,16 +69,12 @@ export default class Register extends React.Component {
           <div class="row h-100 justify-content-center align-items-center">
             <div class="col-6">
               <div class="card-body">
-                <h5 class="card-title text-center">Create A Account </h5>
+                <h5 class="card-title text-center">Sign In</h5>
                 {this.state.loginsuccess && (
-                  <h6 class="card-title text-center">
-                    Account Create Successful!
-                  </h6>
+                  <h6 class="card-title text-center">Login successful!</h6>
                 )}
                 {this.state.show && (
-                  <h6 class="card-title text-center">
-                    Account Create Unsuccessful!
-                  </h6>
+                  <h6 class="card-title text-center">Login unsuccessful!</h6>
                 )}
                 <form onSubmit={this.onSubmit}>
                   <div class="form-label-group">
@@ -112,8 +108,15 @@ export default class Register extends React.Component {
                     class="btn btn-lg btn-primary btn-block"
                     type="submit"
                   >
-                    Create
+                    Sign in
                   </button>
+                  <p>Don't have an account yet?</p>
+                  <a
+                    href="../register/register"
+                    class="btn btn-lg btn-primary btn-block"
+                  >
+                    Create an Account
+                  </a>
                 </form>
               </div>
             </div>

@@ -1,0 +1,57 @@
+.myMasonryGrid {
+  display: -webkit-box; /* Older browsers */
+  display: -ms-flexbox; /* IE 10 */
+  display: flex;
+  margin-left: -30px; /* spacing between columns */
+  width: auto;
+}
+.myMasonryGridColumn {
+  padding-left: 10px; /* spacing between columns */
+  background-clip: padding-box;
+}
+
+/* Clearfix for the masonry grid */
+.myMasonryGrid:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.masonryItem {
+  margin-bottom: 30px; /* spacing between items */
+}
+
+.masonryItem img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* This will ensure that images cover their area without stretching */
+}
+
+.masonryText {
+  text-align: center;
+  margin-top: 8px;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 10px;
+  grid-auto-flow: dense; /* This tells the grid to fill in holes if smaller items are available */
+}
+
+.grid-item {
+  grid-column: span 1;
+}
+
+.grid-item--wide {
+  grid-column: span 2; /* spans two columns */
+}
+
+.grid-item--tall {
+  grid-row: span 2; /* spans two rows */
+}
+
+/* You may need to manually adjust certain items to fit into specific positions */
+.grid-item--manual {
+  grid-column: 2 / span 2; /* Start at column 2 and span 2 columns */
+  grid-row: 1 / span 2; /* Start at row 1 and span 2 rows */
+}
