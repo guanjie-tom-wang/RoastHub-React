@@ -1,0 +1,29 @@
+2023-11-27 11:23:56,178 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2023-11-27 11:23:56,191 INFO o.a.j.JMeter: Loading user properties from: C:\Users\guanj\OneDrive - University of Waterloo\750 temp\apache-jmeter-5.6.2\bin\user.properties
+2023-11-27 11:23:56,192 INFO o.a.j.JMeter: Loading system properties from: C:\Users\guanj\OneDrive - University of Waterloo\750 temp\apache-jmeter-5.6.2\bin\system.properties
+2023-11-27 11:23:56,192 INFO o.a.j.JMeter: Setting JMeter property: thread.count=50
+2023-11-27 11:23:56,199 INFO o.a.j.JMeter: Copyright (c) 1998-2023 The Apache Software Foundation
+2023-11-27 11:23:56,200 INFO o.a.j.JMeter: Version 5.6.2
+2023-11-27 11:23:56,200 INFO o.a.j.JMeter: java.version=19.0.1
+2023-11-27 11:23:56,201 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2023-11-27 11:23:56,201 INFO o.a.j.JMeter: os.name=Windows 11
+2023-11-27 11:23:56,201 INFO o.a.j.JMeter: os.arch=amd64
+2023-11-27 11:23:56,201 INFO o.a.j.JMeter: os.version=10.0
+2023-11-27 11:23:56,201 INFO o.a.j.JMeter: file.encoding=UTF-8
+2023-11-27 11:23:56,201 INFO o.a.j.JMeter: java.awt.headless=true
+2023-11-27 11:23:56,201 INFO o.a.j.JMeter: Max memory     =1073741824
+2023-11-27 11:23:56,201 INFO o.a.j.JMeter: Available Processors =20
+2023-11-27 11:23:56,209 INFO o.a.j.JMeter: Default Locale=English (EN)
+2023-11-27 11:23:56,210 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2023-11-27 11:23:56,210 INFO o.a.j.JMeter: JMeterHome=C:\Users\guanj\OneDrive - University of Waterloo\750 temp\apache-jmeter-5.6.2
+2023-11-27 11:23:56,210 INFO o.a.j.JMeter: user.dir  =E:\foodlover-react
+2023-11-27 11:23:56,210 INFO o.a.j.JMeter: PWD       =E:\foodlover-react
+2023-11-27 11:23:56,211 INFO o.a.j.JMeter: IP: 10.0.0.32 Name: TomWang FullName: host.docker.internal
+2023-11-27 11:23:56,220 ERROR o.a.j.JMeter: An error occurred: 
+org.apache.jmeter.report.config.ConfigurationException: The file E:\foodlover-react\test.jmx doesn't exist or can't be opened
+	at org.apache.jmeter.JMeter.runNonGui(JMeter.java:950) ~[ApacheJMeter_core.jar:5.6.2]
+	at org.apache.jmeter.JMeter.startNonGui(JMeter.java:940) ~[ApacheJMeter_core.jar:5.6.2]
+	at org.apache.jmeter.JMeter.start(JMeter.java:508) [ApacheJMeter_core.jar:5.6.2]
+	at jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.lang.reflect.Method.invoke(Method.java:578) ~[?:?]
+	at org.apache.jmeter.NewDriver.main(NewDriver.java:259) [ApacheJMeter.jar:5.6.2]

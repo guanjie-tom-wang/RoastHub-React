@@ -3,7 +3,10 @@ import Link from "next/link";
 import Head from "next/head";
 import axios from "axios"; // Ensure axios is installed
 // Import any additional necessary modules
-
+const base = {
+  baseUrl: "http://127.0.0.1:8888/",
+  uplaod: "/upload",
+};
 export default class Upload extends React.Component {
   constructor(props) {
     super(props);
@@ -19,17 +22,36 @@ export default class Upload extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const { typeOfRecipes, nameOfRecipes, recipesFile, coverPage } = this.state;
+    if (!recipesFile || !coverPage) {
+      console.error("File or image not selected");
+      return;
+    }
     const formData = new FormData();
-    formData.append("TypeOfRecipes", typeOfRecipes);
-    formData.append("NameOfRecipes", nameOfRecipes);
-    formData.append("Recipes", recipesFile);
-    formData.append("coverPage", coverPage);
+    console.log("name", nameOfRecipes);
 
-    // Adjust the POST URL and configuration as necessary
+    formData.append("name", nameOfRecipes);
+    formData.append("file", recipesFile);
+    formData.append("image", coverPage);
+
+    const recipeTypeUrls = {
+      Breakfast: "/breakfast",
+      Lunch: "/lunch",
+      Dinner: "/dinner",
+      Snack: "/snack",
+    };
+
+    for (let [key, value] of formData.entries()) {
+      console.log(key, value);
+    }
+
+    let url =
+      "http://localhost:8888/" + recipeTypeUrls[typeOfRecipes] + "/upload"; // 默认路径作为后备
+
     axios
-      .post("/upload", formData)
+      .post(url, formData)
       .then((response) => {
         console.log(response);
+        alert("submit successful");
         // Handle response
       })
       .catch((error) => {
@@ -40,13 +62,15 @@ export default class Upload extends React.Component {
 
   handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === "Recipes" || name === "coverPage") {
-      this.setState({ [name]: files[0] });
+
+    if (name === "file") {
+      this.setState({ recipesFile: files[0] });
+    } else if (name === "image") {
+      this.setState({ coverPage: files[0] });
     } else {
       this.setState({ [name]: value });
     }
   };
-
   render() {
     const { typeOfRecipes, nameOfRecipes } = this.state;
     return (
@@ -131,16 +155,17 @@ export default class Upload extends React.Component {
               <p>Choose the PDF file you want to upload:</p>
               <input
                 type="file"
-                name="recipesFile"
+                name="file"
                 onChange={this.handleChange}
+                accept="application/pdf"
               />
             </div>
             <div className="form-group">
               <p>Choose the cover picture for this file:</p>
               <input
                 type="file"
-                name="coverPage"
-                accept="image/png, image/jpeg"
+                name="image"
+                accept="image/*"
                 onChange={this.handleChange}
               />
             </div>

@@ -1,5 +1,7 @@
 import React from "react";
-import axios from "../request";
+import axios from "./request";
+import { useHistory } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 const base = {
   baseUrl: "http://127.0.0.1:8888",
@@ -20,12 +22,15 @@ export default class SignupForm extends React.Component {
     this.state = {
       username: "",
       password: "",
+      loginsuccess: false,
+      show: false,
     };
   }
   onSubmit = (e) => {
     e.preventDefault();
+
     const formData = {
-      account: this.state.username,
+      username: this.state.username,
       password: this.state.password,
     };
     axios
@@ -33,7 +38,16 @@ export default class SignupForm extends React.Component {
         "Access-Control-Allow-Origin": "*",
       })
       .then((res) => {
-        console.log("g", res);
+        console.log("guanjie wang1", res.data.success);
+        console.log("guanjie wang2", res.data);
+
+        if (res.data.success == true) {
+          this.setState({ loginsuccess: true, show: false });
+          window.open("/upload", "_blank");
+          // alert("login successfulm, transfer to upload page");
+        } else {
+          this.setState({ show: true, loginsuccess: false });
+        }
       })
       .catch((error) => {
         console.log(error);
@@ -56,6 +70,12 @@ export default class SignupForm extends React.Component {
             <div class="col-6">
               <div class="card-body">
                 <h5 class="card-title text-center">Sign In</h5>
+                {this.state.loginsuccess && (
+                  <h6 class="card-title text-center">Login successful!</h6>
+                )}
+                {this.state.show && (
+                  <h6 class="card-title text-center">Login unsuccessful!</h6>
+                )}
                 <form onSubmit={this.onSubmit}>
                   <div class="form-label-group">
                     <label for="inputEmail">Username</label>
@@ -91,10 +111,7 @@ export default class SignupForm extends React.Component {
                     Sign in
                   </button>
                   <p>Don't have an account yet?</p>
-                  <a
-                    href="{{url_for('register')}}"
-                    class="btn btn-lg btn-primary btn-block"
-                  >
+                  <a href="/register" class="btn btn-lg btn-primary btn-block">
                     Create an Account
                   </a>
                 </form>
