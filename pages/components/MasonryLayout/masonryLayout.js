@@ -1,5 +1,5 @@
 import React from "react";
-import Masonry from "react-masonry-css";
+import { Masonry, MasonryAbsoluteItem } from "react-masonry-component2";
 import styles from "./masonry.module.css";
 import Image from "next/image";
 import { useNavigate } from "react-router-dom";
@@ -30,9 +30,13 @@ const MasonryLayout = ({ items }) => {
   // Accept items as a prop
   return (
     <Masonry
-      breakpointCols={breakpointColumnsObj}
-      className={styles.myMasonryGrid}
-      columnClassName={styles.myMasonryGridColumn}
+      style={{ marginTop: "2%" }}
+      direction="column"
+      columnsCountBreakPoints={{
+        1400: 5,
+        1000: 4,
+        700: 3,
+      }}
     >
       {items.map((item, index) => (
         <div key={index} className={styles.masonryItem}>

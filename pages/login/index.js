@@ -43,7 +43,7 @@ export default class SignupForm extends React.Component {
 
         if (res.data.success == true) {
           this.setState({ loginsuccess: true, show: false });
-          window.open("../upload/upload", "_blank");
+          window.open("../upload/", "_blank");
           // alert("login successfulm, transfer to upload page");
         } else {
           this.setState({ show: true, loginsuccess: false });
@@ -112,7 +112,7 @@ export default class SignupForm extends React.Component {
                   </button>
                   <p>Don't have an account yet?</p>
                   <a
-                    href="../register/register"
+                    href="../register/"
                     class="btn btn-lg btn-primary btn-block"
                   >
                     Create an Account
