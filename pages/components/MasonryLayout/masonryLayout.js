@@ -15,14 +15,14 @@ const breakpointColumnsObj = {
 const MasonryLayout = ({ items }) => {
   const router = useRouter();
   const handleClick = (pdfUrl, type) => {
-    if (type.toLowerCase() === "breakfast") {
-      pdfUrl = "http://127.0.0.1:8888/breakfast/description/" + pdfUrl;
-    } else if (type.toLowerCase() === "dinner") {
-      pdfUrl = "http://127.0.0.1:8888/dinner/description/" + pdfUrl;
-    } else if (type.toLowerCase() === "lunch") {
-      pdfUrl = "http://127.0.0.1:8888/lunch/description/" + pdfUrl;
-    } else if (type.toLowerCase() === "snack") {
-      pdfUrl = "http://127.0.0.1:8888/snack/description/" + pdfUrl;
+    if (type.toLowerCase() === "waterloo") {
+      pdfUrl = "http://127.0.0.1:8888/waterloo/description/" + pdfUrl;
+    } else if (type.toLowerCase() === "toronto") {
+      pdfUrl = "http://127.0.0.1:8888/toronto/description/" + pdfUrl;
+    } else if (type.toLowerCase() === "kitchener") {
+      pdfUrl = "http://127.0.0.1:8888/kitchener/description/" + pdfUrl;
+    } else if (type.toLowerCase() === "mississauga") {
+      pdfUrl = "http://127.0.0.1:8888/mississauga/description/" + pdfUrl;
     }
     console.log("pdfid: ", pdfUrl);
     router.push(`/recipt/description?fileId=${encodeURIComponent(pdfUrl)}`);

@@ -17,7 +17,7 @@ export default class Breakfast extends React.Component {
 
   componentDidMount() {
     axios
-      .get("http://127.0.0.1:8888/breakfast/show")
+      .get("http://127.0.0.1:8888/waterloo/show")
       .then((res) => {
         if (res.data && Array.isArray(res.data)) {
           const images = res.data.map((item) => item.pictureUrl);

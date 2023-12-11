@@ -4,7 +4,7 @@ import MasonryLayout from "../components/MasonryLayout/masonryLayout";
 import Link from "next/link";
 import NavBar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/footer";
-export default class Dinner extends React.Component {
+export default class Snack extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -17,13 +17,13 @@ export default class Dinner extends React.Component {
 
   componentDidMount() {
     axios
-      .get("http://127.0.0.1:8888/dinner/show")
+      .get("http://127.0.0.1:8888/mississauga/show")
       .then((res) => {
         if (res.data && Array.isArray(res.data)) {
           const images = res.data.map((item) => item.pictureUrl);
           const names = res.data.map((item) => item.name);
-          const files = res.data.map((item) => item.detailUrl);
           const types = res.data.map((item) => item.type);
+          const files = res.data.map((item) => item.detailUrl);
 
           this.setState(
             {
@@ -62,6 +62,7 @@ export default class Dinner extends React.Component {
       <>
         <NavBar />
         <div className="container">
+          {console.log("wang: ", items)}
           <MasonryLayout items={items} />
         </div>
         <Footer />

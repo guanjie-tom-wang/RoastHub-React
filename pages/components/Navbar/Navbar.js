@@ -6,7 +6,7 @@ const NavBar = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
         <Link className="navbar-brand" href="/welcome/">
-          Food Lover
+          RoastHub
         </Link>
         <button
           className="navbar-toggler"
@@ -22,23 +22,23 @@ const NavBar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav m-auto">
             <li className="nav-item active">
-              <Link className="nav-link" href="/recipt/breakfast">
-                Breakfast
+              <Link className="nav-link" href="/recipt/waterloo">
+                Waterloo
               </Link>
             </li>
             <li className="nav-item active">
-              <Link className="nav-link" href="/recipt/lunch">
-                Lunch
+              <Link className="nav-link" href="/recipt/kitchener">
+                Kitchener
               </Link>
             </li>
             <li className="nav-item active">
-              <Link className="nav-link" href="/recipt/dinner">
-                Dinner
+              <Link className="nav-link" href="/recipt/toronto">
+                Toronto
               </Link>
             </li>
             <li className="nav-item active">
-              <Link className="nav-link" href="/recipt/snack">
-                Snack
+              <Link className="nav-link" href="/recipt/mississauga">
+                Mississauga
               </Link>
             </li>
           </ul>

@@ -36,10 +36,10 @@ export default class Upload extends React.Component {
     formData.append("type", typeOfRecipes);
 
     const recipeTypeUrls = {
-      Breakfast: "/breakfast",
-      Lunch: "/lunch",
-      Dinner: "/dinner",
-      Snack: "/snack",
+      Waterloo: "/waterloo",
+      Kitchener: "/kitchener",
+      Toronto: "/toronto",
+      Mississauga: "/mississauga",
     };
 
     for (let [key, value] of formData.entries()) {
@@ -85,12 +85,12 @@ export default class Upload extends React.Component {
           <form onSubmit={this.handleSubmit} encType="multipart/form-data">
             <div className="form-group">
               <p>
-                Choose the type of recipes (Breakfast, Lunch, Dinner, Snack):
+                Choose the Location (Waterloo Kitchener Toronto Mississauga):
               </p>
               <input
                 type="text"
                 name="typeOfRecipes"
-                placeholder="Type of Recipes"
+                placeholder="Location"
                 value={typeOfRecipes}
                 onChange={this.handleChange}
               />
