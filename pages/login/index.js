@@ -33,27 +33,34 @@ export default class SignupForm extends React.Component {
       username: this.state.username,
       password: this.state.password,
     };
-    axios
-      .post(base.baseUrl + base.login, formData, {
-        "Access-Control-Allow-Origin": "*",
-      })
-      .then((res) => {
-        console.log("guanjie wang1", res.data.success);
-        console.log("guanjie wang2", res.data);
+    var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-        if (res.data.success == true) {
-          this.setState({ loginsuccess: true, show: false });
-          window.open("../upload/", "_blank");
-          // alert("login successfulm, transfer to upload page");
-        } else {
-          this.setState({ show: true, loginsuccess: false });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    // Test the email against the regular expression
+    if (regex.test(formData.username)) {
+      axios
+        .post(base.baseUrl + base.login, formData, {
+          "Access-Control-Allow-Origin": "*",
+        })
+        .then((res) => {
+          console.log("guanjie wang1", res.data.success);
+          console.log("guanjie wang2", res.data);
 
-    console.log(this.state);
+          if (res.data.success == true) {
+            this.setState({ loginsuccess: true, show: false });
+            window.open("../upload/", "_blank");
+            // alert("login successfulm, transfer to upload page");
+          } else {
+            this.setState({ show: true, loginsuccess: false });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      console.log(this.state);
+    } else {
+      this.setState({ show: true, loginsuccess: false });
+    }
   };
   changeHandler = (e) => {
     this.setState({
@@ -74,7 +81,10 @@ export default class SignupForm extends React.Component {
                   <h6 class="card-title text-center">Login successful!</h6>
                 )}
                 {this.state.show && (
-                  <h6 class="card-title text-center">Login unsuccessful!</h6>
+                  <h6 class="card-title text-center">
+                    Login unsuccessful! check username whether is the vaild
+                    email address
+                  </h6>
                 )}
                 <form onSubmit={this.onSubmit}>
                   <div class="form-label-group">

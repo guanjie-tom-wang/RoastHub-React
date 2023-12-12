@@ -31,25 +31,33 @@ export default class Register extends React.Component {
       username: this.state.username,
       password: this.state.password,
     };
-    axios
-      .post(base.baseUrl + base.login, formData, {
-        "Access-Control-Allow-Origin": "*",
-      })
-      .then((res) => {
-        if (res.data.success == true) {
-          this.setState({ loginsuccess: true, show: false });
-          window.open("../upload/", "_blank");
-          // alert("login successfulm, transfer to upload page");
-        } else {
-          this.setState({ show: true, loginsuccess: false });
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
-    console.log(this.state);
+    // Test the email against the regular expression
+    if (regex.test(formData.username)) {
+      axios
+        .post(base.baseUrl + base.login, formData, {
+          "Access-Control-Allow-Origin": "*",
+        })
+        .then((res) => {
+          if (res.data.success == true) {
+            this.setState({ loginsuccess: true, show: false });
+            window.open("../upload/", "_blank");
+            // alert("login successfulm, transfer to upload page");
+          } else {
+            this.setState({ show: true, loginsuccess: false });
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      console.log(this.state);
+    } else {
+      this.setState({ show: true, loginsuccess: false });
+    }
   };
+
   changeHandler = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -72,7 +80,8 @@ export default class Register extends React.Component {
                 )}
                 {this.state.show && (
                   <h6 class="card-title text-center">
-                    Account Create Unsuccessful!
+                    Account Create Unsuccessful! Username must be the valid
+                    email address!
                   </h6>
                 )}
                 <form onSubmit={this.onSubmit}>
