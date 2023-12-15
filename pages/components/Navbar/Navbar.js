@@ -1,7 +1,14 @@
-import React from "react";
-import { Container, Navbar, Nav } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 const NavBar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    // The useEffect hook runs on the client side after the component mounts.
+    // You can safely check for localStorage here.
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, []);
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div className="container">
@@ -41,13 +48,30 @@ const NavBar = () => {
                 Mississauga
               </Link>
             </li>
+            {isLoggedIn && (
+              <li className="nav-item active">
+                <Link className="nav-link" href="/upload/">
+                  Upload
+                </Link>
+              </li>
+            )}
           </ul>
+
           <ul className="navbar-nav ml-auto">
-            <li className="nav-item active">
-              <Link className="nav-link" href="/login/">
-                Login
-              </Link>
-            </li>
+            {!isLoggedIn && (
+              <li className="nav-item active">
+                <Link className="nav-link" href="/login/">
+                  Login
+                </Link>
+              </li>
+            )}
+            {isLoggedIn && (
+              <li className="nav-item active">
+                <Link className="nav-link" href="/login/logout">
+                  Logout
+                </Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

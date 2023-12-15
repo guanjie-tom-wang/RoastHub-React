@@ -2,6 +2,8 @@ import React from "react";
 import axios from "../recipt/request";
 import { useHistory } from "react-router-dom";
 import { withRouter } from "react-router-dom";
+import Footer from "../components/Footer/footer";
+import NavBar from "../components/Navbar/Navbar";
 
 const base = {
   baseUrl: "http://127.0.0.1:8888",
@@ -42,13 +44,10 @@ export default class SignupForm extends React.Component {
           "Access-Control-Allow-Origin": "*",
         })
         .then((res) => {
-          console.log("guanjie wang1", res.data.success);
-          console.log("guanjie wang2", res.data);
-
           if (res.data.success == true) {
             this.setState({ loginsuccess: true, show: false });
-            window.open("../upload/", "_blank");
-            // alert("login successfulm, transfer to upload page");
+            localStorage.setItem("token", res.data.data);
+            window.location.reload();
           } else {
             this.setState({ show: true, loginsuccess: false });
           }
@@ -72,11 +71,11 @@ export default class SignupForm extends React.Component {
     const { username, password } = this.state;
     return (
       <>
+        <NavBar />
         <div class="container h-100">
           <div class="row h-100 justify-content-center align-items-center">
             <div class="col-6">
               <div class="card-body">
-                <h5 class="card-title text-center">Sign In</h5>
                 {this.state.loginsuccess && (
                   <h6 class="card-title text-center">Login successful!</h6>
                 )}
@@ -132,6 +131,12 @@ export default class SignupForm extends React.Component {
             </div>
           </div>
         </div>
+        <br></br>
+        <br></br>
+
+        <br></br>
+
+        <Footer />
       </>
     );
   }

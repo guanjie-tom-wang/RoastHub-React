@@ -42,6 +42,7 @@ export default class Register extends React.Component {
         .then((res) => {
           if (res.data.success == true) {
             this.setState({ loginsuccess: true, show: false });
+            localStorage.setItem("token", res.data.data);
             window.open("../upload/", "_blank");
             // alert("login successfulm, transfer to upload page");
           } else {

@@ -34,6 +34,7 @@ export default class Upload extends React.Component {
     formData.append("file", recipesFile);
     formData.append("image", coverPage);
     formData.append("type", typeOfRecipes);
+    formData.append("token", localStorage.getItem("token"));
 
     const recipeTypeUrls = {
       Waterloo: "/waterloo",
