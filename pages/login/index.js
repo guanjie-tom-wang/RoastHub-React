@@ -47,7 +47,8 @@ export default class SignupForm extends React.Component {
           if (res.data.success == true) {
             this.setState({ loginsuccess: true, show: false });
             localStorage.setItem("token", res.data.data);
-            window.location.reload();
+            window.close();
+            window.location.href = "../welcome/";
           } else {
             this.setState({ show: true, loginsuccess: false });
           }
