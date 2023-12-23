@@ -4,7 +4,7 @@ import MasonryLayout from "../components/MasonryLayout/masonryLayout";
 import Link from "next/link";
 import NavBar from "../components/Navbar/Navbar";
 import Footer from "../components/Footer/footer";
-export default class Snack extends React.Component {
+export default class mississauga extends React.Component {
   constructor() {
     super();
     this.state = {

@@ -55,6 +55,13 @@ const NavBar = () => {
                 </Link>
               </li>
             )}
+            {isLoggedIn && (
+              <li className="nav-item active">
+                <Link className="nav-link" href="/recipt/uploadHistory">
+                  MyUpload
+                </Link>
+              </li>
+            )}
           </ul>
 
           <ul className="navbar-nav ml-auto">
