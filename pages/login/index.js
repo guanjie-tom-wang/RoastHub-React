@@ -73,6 +73,7 @@ export default class SignupForm extends React.Component {
     return (
       <>
         <NavBar />
+      
         <div class="container h-100">
           <div class="row h-100 justify-content-center align-items-center">
             <div class="col-6">
