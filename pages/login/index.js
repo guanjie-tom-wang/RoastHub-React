@@ -94,7 +94,7 @@ export default class SignupForm extends React.Component {
                       id="inputEmail"
                       name="username"
                       class="form-control"
-                      placeholder="Username"
+                      placeholder="Email Address"
                       required
                       autoFocus
                       onChange={this.changeHandler}

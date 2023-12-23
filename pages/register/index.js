@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "./request";
+import NavBar from "../components/Navbar/Navbar";
 
 const base = {
   baseUrl: "http://127.0.0.1:8888",
@@ -70,6 +71,7 @@ export default class Register extends React.Component {
     const { username, password } = this.state;
     return (
       <>
+        <NavBar></NavBar>
         <div class="container h-100">
           <div class="row h-100 justify-content-center align-items-center">
             <div class="col-6">
@@ -94,7 +96,7 @@ export default class Register extends React.Component {
                       id="inputEmail"
                       name="username"
                       class="form-control"
-                      placeholder="Username"
+                      placeholder="Email Address"
                       required
                       autoFocus
                       onChange={this.changeHandler}
